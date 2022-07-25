@@ -1,7 +1,7 @@
 import UIKit
 
 func runningSum(_ nums: [Int]) -> [Int] {
-        /// Constraints:
+    /// Constraints:
     /// 1 <= nums.length <= 1000
     /// -10^6 <= nums[i] <= 10^6
     guard nums.count >= 1 && nums.count <= 1000 else {
