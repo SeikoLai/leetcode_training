@@ -26,25 +26,24 @@ func addBinary(_ a: String, _ b: String) -> String {
             }
             else if isCarray && a[index] == "0" && b[index] == "1" || a[index] == "1" && b[index] == "0" {
                 result[index] = "0"
-                isCarray = true
             }
             else if isCarray && a[index] == "1" && b[index] == "1" {
                 result[index] = "1"
+            }
+        }
+        else {
+            if a[index] == "0" && b[index] == "0" {
+                result[index] = "0"
+            }
+            else if a[index] == "0" && b[index] == "1" || a[index] == "1" && b[index] == "0" {
+                result[index] = "1"
+            }
+            else if a[index] == "1" && b[index] == "1" {
+                result[index] = "0"
                 isCarray = true
             }
         }
-        else if a[index] == "0" && b[index] == "0" {
-            result[index] = "0"
-            isCarray = false
-        }
-        else if a[index] == "0" && b[index] == "1" || a[index] == "1" && b[index] == "0" {
-            result[index] = "1"
-            isCarray = false
-        }
-        else if a[index] == "1" && b[index] == "1" {
-            result[index] = "0"
-            isCarray = true
-        }
+        
         index -= 1
     } while (index >= 0)
     
