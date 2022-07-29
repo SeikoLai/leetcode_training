@@ -28,7 +28,14 @@ let n3 = 4
 // 6. 2 steps + 2 steps + 1 step
 // 7. 2 steps + 1 step + 2 steps
 let n4 = 6
+
+// Bad
 func climbStairs(_ n: Int) -> Int {
+    guard n > 2 else { return n }
+    return climbStairs(n-1)+climbStairs(n-2)
+}
+// Good
+func climbStairs2(_ n: Int) -> Int {
     var a = 1
     var b = 1
     guard n > 1 else { return a }
