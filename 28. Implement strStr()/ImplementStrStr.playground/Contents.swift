@@ -1,5 +1,5 @@
-import Darwin
 import Foundation
+
 func strStr(_ haystack: String, _ needle: String) -> Int {
     // Constraints:
     //

@@ -1,5 +1,3 @@
-import UIKit
-
 func longestCommonPrefix(_ strs: [String]) -> String {
     /// Constraints:
     /// 1 <= strs.length <= 200
