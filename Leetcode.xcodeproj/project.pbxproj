@@ -1,0 +1,85 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		227CE7822D0A8F21007C4F19 /* Attempt */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Attempt;
+			sourceTree = "<group>";
+		};
+		227CE7882D0A8F26007C4F19 /* Submitted */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Submitted;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXGroup section */
+		227CE7702D0A8EE3007C4F19 = {
+			isa = PBXGroup;
+			children = (
+				227CE7822D0A8F21007C4F19 /* Attempt */,
+				227CE7882D0A8F26007C4F19 /* Submitted */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		227CE7712D0A8EE3007C4F19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1610;
+			};
+			buildConfigurationList = 227CE7742D0A8EE3007C4F19 /* Build configuration list for PBXProject "Leetcode" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 227CE7702D0A8EE3007C4F19;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		227CE7752D0A8EE3007C4F19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		227CE7762D0A8EE3007C4F19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		227CE7742D0A8EE3007C4F19 /* Build configuration list for PBXProject "Leetcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				227CE7752D0A8EE3007C4F19 /* Debug */,
+				227CE7762D0A8EE3007C4F19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 227CE7712D0A8EE3007C4F19 /* Project object */;
+}
