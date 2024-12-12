@@ -9,7 +9,7 @@ func removeElement(_ nums: inout [Int], _ val: Int) -> Int {
     guard 0 <= nums.count && nums.count <= 100 && nums.map({0 <= $0 && $0 >= 50 }).count == count && 0 <= val && val <= 100 else {
         return 0
     }
-    nums = nums.filter({$0 != val })
+    nums = nums.filter { $0 != val }
     return nums.count
 }
 

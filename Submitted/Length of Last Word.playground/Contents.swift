@@ -1,14 +1,16 @@
+// Constraints:
+//
+// 1 <= s.length <= 10^4
+// s consists of only English letters and spaces ' '.
+// There will be at least one word in s.
 func lengthOfLastWord(_ s: String) -> Int {
-    // Constraints:
-    //
-    // 1 <= s.length <= 10^4
-    // s consists of only English letters and spaces ' '.
-    // There will be at least one word in s.
     guard 1 <= s.count && s.count <= 10_000 else {
         return 0
     }
-    
-    return s.split(separator: " ").last?.count ?? 0
+    guard let last = s.split(separator: " ").last else {
+        return 0
+    }
+    return last.count ?? 0
 }
 
 let s1 = "Hello World" // Output: 5
