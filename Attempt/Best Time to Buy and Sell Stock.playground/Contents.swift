@@ -1,42 +1,34 @@
 class Solution {
     func maxProfit(_ prices: [Int]) -> Int {
-        // Get the min value
-        var min = prices.min(by: {$0<$1})!
-        print(min)
-        // Get the min value index
-        var minIndex = prices.firstIndex(of: min)!
-        // Get the max value by above remaining values
-        let max = prices.max(by: {$0<$1})!
-        // Get the max value index
-        let maxIndex = prices.firstIndex(of: max)!
+        var sortedPrices = prices
+        sortedPrices.sort(by: > )
+        if prices == sortedPrices { return 0 }
         
-        if maxIndex < minIndex {
-//            // Get the max value by above remaining values
-//            max = prices.max(by: {$0<$1})!
-//            // Get the max value index
-//            maxIndex = prices.firstIndex(of: max)!
-            // Get the min value
-            min = prices[0...maxIndex].min(by: {$0<$1})!
-            print(min)
-            // Get the min value index
-            minIndex = prices.firstIndex(of: min)!
-//            print(min)
-            if max - min > 0 { return max - min }
+        var min: Int = prices.min() ?? -1
+        var max: Int = prices.max() ?? -1
+        
+        if min == prices.last, let newMin = prices.dropLast().min() {
+            min = newMin
+        }
+        if max == prices.first, let newMax = prices.dropFirst().max() {
+            max = newMax
         }
         
-        
-        // Return 0 if max index is less then min index
-        guard maxIndex > minIndex else { return 0 }
-        // Return the maximum profit
         return max - min
     }
 }
 
-var prices = [7,1,5,3,6,4] // Output: 5
+var prices = [7,1,5,3,6,4] // Expected: 5
 var result = Solution().maxProfit(prices)
 
-//prices = [7,6,4,3,1] // Output: 0
-//result = Solution().maxProfit(prices)
+prices = [7,6,4,3,1] // Expected: 0
+result = Solution().maxProfit(prices)
 
-//prices = [2,4,1] // Output: 2
-//result = Solution().maxProfit(prices)
+prices = [2,4,1] // Expected: 2
+result = Solution().maxProfit(prices)
+
+prices = [2,1,4] // Expected: 3
+result = Solution().maxProfit(prices)
+
+prices = [2,1,2,0,1] // Expected: 1
+result = Solution().maxProfit(prices)
