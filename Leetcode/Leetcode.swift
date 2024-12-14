@@ -9,11 +9,17 @@ import Foundation
 
 class Solution {
     func twoSum(_ numbers: [Int], _ target: Int) -> [Int] {
-        for (i, number) in numbers.enumerated() {
-            for (j, otherNumber) in numbers.enumerated() where i != j {
-                if number + otherNumber == target {
-                    return [i+1, j+1]
-                }
+        var left = 0
+        var right = numbers.count - 1
+        
+        while left < right {
+            let sum = numbers[left] + numbers[right]
+            if sum == target {
+                return [left + 1, right + 1]
+            } else if sum < target {
+                left += 1
+            } else {
+                right -= 1
             }
         }
         return []
