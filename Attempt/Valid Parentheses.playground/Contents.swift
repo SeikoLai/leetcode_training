@@ -1,52 +1,99 @@
-// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-//
-// An input string is valid if:
-//
-// Open brackets must be closed by the same type of brackets.
-// Open brackets must be closed in the correct order.
+import Foundation
 
-func isValid(_ s: String) -> Bool {
-    // Constraints:
-    //
-    // 1 <= s.length <= 10^4
-    // s consists of parentheses only '()[]{}'.
-    guard s.count >= 1 && s.count <= 10_000 && s.filter({ $0 == "(" || $0 == ")" || $0 == "[" || $0 == "]" || $0 == "{" || $0 == "}" }).count == s.count && s.count % 2 == 0 else {
-        return false
-    }
-    
-    let chars: [Character] = Array(s)
-    let reversedChars = Array(String(s.reversed()))
-    var index = 0
-    var shift = 1
-    while index < chars.count {
+// Example 1:
+// Input: s = "()"
+// Output: true
+//
+// Example 2:
+// Input: s = "()[]{}"
+// Output: true
+//
+// Example 3:
+// Input: s = "(]"
+// Output: false
+//
+// Example 4:
+// Input: s = "([])"
+// Output: true
+
+class Solution {
+    func isValid(_ s: String) -> Bool {
+        let parenthesesDict = ["(":")", "[":"]", "{":"}"]
+        let parenthesesList = Array(String(s))
+        guard parenthesesList.count % 2 == 0 else {
+            return false
+        }
+        let openingParentheses = parenthesesList.filter({ $0 == "(" })
+        let closingParentheses = parenthesesList.filter({ $0 == ")" })
+        guard openingParentheses.count >= 0 && openingParentheses.count == closingParentheses.count else {
+            return false
+        }
+        let openingBraces = parenthesesList.filter({ $0 == "[" })
+        let closingBraces = parenthesesList.filter({ $0 == "]" })
+        guard openingBraces.count >= 0 && openingBraces.count == closingBraces.count else {
+            return false
+        }
+        let openingCurlyBraces = parenthesesList.filter({ $0 == "{" })
+        let closingCurlyBraces = parenthesesList.filter({ $0 == "}" })
+        guard  openingCurlyBraces.count >= 0 && openingCurlyBraces.count == closingCurlyBraces.count else {
+            return false
+        }
         
-        index = index + shift
+        let remaining: [Character] = parenthesesList.reduce(into: parenthesesList) { partialResult, char in
+            let target = parenthesesDict[String(char)]
+            print("target: \(target)")
+            var found = false
+            if let index = partialResult.lastIndex(where: { String($0) == target }) {
+                print("lastIndex: \(index)")
+                if index == 1 {
+                    partialResult = Array(partialResult.dropFirst(2))
+                    found = true
+                } else if index == partialResult.count - 1 {
+                    partialResult = Array(partialResult.dropFirst())
+                    partialResult = Array(partialResult.dropLast())
+                    found = true
+                }
+            }
+            if found == false {
+                if let index = partialResult.firstIndex(where: { String($0) == target }) {
+                    if index % 2 == 1 {
+                        partialResult.remove(at: index)
+                        partialResult = Array(partialResult.dropFirst())
+                        found = true
+                    }
+                }
+            }
+        }
+        return remaining.count == 0
     }
-
-    
-    return true
 }
 
-let s1 = "()" // Output: true
-let s2 = "()[]{}" // Output: true
-let s3 = "(]" // Output: false
-let s4 = "Swift"
-let s5 = "{[()]}"
-let s6 = "{[(Swift)]}"
-let s7 = "(){}}{"
-let s8 = "({{{{}}}))"
-let s9 = "[([]])"
-let s10 = "}{"
+let solution = Solution()
+var testCase = "[({(())}[()])]"
+//var testCase = "([])"
+var assert = solution.isValid(testCase) == true
 
-//let result1 = isValid(s1) // true
-let result2 = isValid(s2) // true
-//let result3 = isValid(s3) // false
-//let result4 = isValid(s4) // false
-//let result5 = isValid(s5) // true
-//let result6 = isValid(s6) // false
-//let result7 = isValid(s7) // false
-//let result8 = isValid(s8) // false
-//let result9 = isValid(s9) // false
-//let result10 = isValid(s10) // false
+//testCase = "()[]{}"
+//assert = solution.isValid(testCase) == true
+//
+//testCase = "(]"
+//assert = solution.isValid(testCase) == false
+//
+//testCase = "([])"
+//assert = solution.isValid(testCase) == true
+//
+//testCase = "(([]){})"
+//assert = solution.isValid(testCase) == true
+//
+//testCase = "[({(())}[()])]"
+//assert = solution.isValid(testCase) == true
+//
+//testCase = "({{{{}}}))"
+//assert = solution.isValid(testCase) == false
 
 
+// [({(())}[()])]
+// ({(())}[()])
+// {(())}[()]
+// (())[()]
+// (())[()]

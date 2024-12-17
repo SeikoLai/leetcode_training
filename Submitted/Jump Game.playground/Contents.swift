@@ -10,30 +10,14 @@
 
 class Solution {
     func canJump(_ nums: [Int]) -> Bool {
-        var index = 0
-        var canJump = true
-        while index < nums.count - 1 {
-            
-            let maxJumpLength = nums[index]
-            
-            if maxJumpLength == 0 {
-                return false
+        var goal = nums.count - 1
+        for i in stride(from: nums.count - 2, through: 0, by: -1) {
+            if i + nums[i] >= goal {
+                goal = i
+                print("Updated goal \(goal)")
             }
-            let remainingLength = nums.dropFirst(index+1)
-            print("remainingLength: \(remainingLength)")
-            var jumpLength = 0
-            while jumpLength < maxJumpLength {
-                let jumpTo = Array(remainingLength)[jumpLength]
-                print("jumpLength \(jumpLength), jumpTo \(jumpTo)")
-                if jumpLength == maxJumpLength - 1 && jumpTo == 0 {
-                    canJump = false
-                }
-                jumpLength += 1
-            }
-            
-            index += 1
         }
-        return canJump
+        return goal == 0
     }
 }
 
