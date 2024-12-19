@@ -1,10 +1,3 @@
-//
-//  Leetcode.swift
-//  Leetcode
-//
-//  Created by Sam on 2024/12/12.
-//
-
 import Foundation
 
 // Example 1:
@@ -55,3 +48,25 @@ class Solution {
         return true
     }
 }
+
+let solution = Solution()
+var testCase: (String, String) = ("abba", "dog cat cat dog")
+var assert = solution.wordPattern(testCase.0, testCase.1) == true
+
+testCase = ("abba", "dog cat cat fish")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
+
+testCase = ("aaaa", "dog cat cat dog")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
+
+testCase = ("abba", "dog dog dog dog")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
+
+testCase = ("abc", "dog cat dog")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
+
+testCase = ("aba", "cat cat cat dog")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
+
+testCase = ("aba", "dog cat cat")
+assert = solution.wordPattern(testCase.0, testCase.1) == false
