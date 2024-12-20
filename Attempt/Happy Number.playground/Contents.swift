@@ -1,24 +1,27 @@
 import Foundation
 
+// Example 1:
+// Input: n = 19
+// Output: true
+// Explanation:
+// 12 + 92 = 82
+// 82 + 22 = 68
+// 62 + 82 = 100
+// 12 + 02 + 02 = 1
+//
+// Example 2:
+// Input: n = 2
+// Output: false
+
 class Solution {
     func isHappy(_ n: Int) -> Bool {
-        guard n > 3 else { return false }
-
-        var value = calculate(n)
-        if value > 4 {
-            value = calculate(value)
-        }
-
-        return value == 1
-    }
-
-    private func calculate(_ n: Int) -> Int {
-        let stringValue = String(n)
-        let digits = stringValue.map { Int(String($0)) }
-        let sum = digits.reduce(0, { $0 + ($1 ?? 0) * ($1 ?? 0)})
-        return sum
+        
     }
 }
 
 let solution = Solution()
-print(solution.isHappy(19))
+var testCase = 19
+var assert = solution.isHappy(testCase) == true
+
+testCase = 2
+assert = solution.isHappy(testCase) == false
