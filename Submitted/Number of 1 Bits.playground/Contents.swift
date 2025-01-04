@@ -1,10 +1,3 @@
-//
-//  Leetcode.swift
-//  Leetcode
-//
-//  Created by Sam on 2024/12/12.
-//
-
 import Foundation
 
 // Given a positive integer n, write a function that returns the number of
@@ -42,3 +35,13 @@ class Solution {
         return result
     }
 }
+
+let solution = Solution()
+var testCase = 11
+var assertion = solution.hammingWeight(testCase) == 3
+
+testCase = 128
+assertion = solution.hammingWeight(testCase) == 1
+
+testCase = 2147483645
+assertion = solution.hammingWeight(testCase) == 30
