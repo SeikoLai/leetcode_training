@@ -1,10 +1,3 @@
-//
-//  Leetcode.swift
-//  Leetcode
-//
-//  Created by Sam on 2024/12/12.
-//
-
 import Foundation
 
 // Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
@@ -36,3 +29,10 @@ class Solution {
         return value
     }
 }
+
+let solution = Solution()
+var testCase = 38
+var assert = solution.addDigits(testCase) == 2
+
+testCase = 0
+assert = solution.addDigits(testCase) == 0
