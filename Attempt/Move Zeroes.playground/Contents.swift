@@ -1,10 +1,3 @@
-//
-//  Leetcode.swift
-//  Leetcode
-//
-//  Created by Sam on 2024/12/12.
-//
-
 import Foundation
 
 // Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
@@ -36,4 +29,17 @@ class Solution {
         }
     }
 }
+
+let solution = Solution()
+var testCase = [0,1,0,3,12]
+solution.moveZeroes(&testCase)
+var assert = testCase == [1,3,12,0,0]
+
+testCase = [0]
+solution.moveZeroes(&testCase)
+assert = testCase == [0]
+
+testCase = [0,0,1]
+solution.moveZeroes(&testCase)
+assert = testCase == [1,0,0]
 
