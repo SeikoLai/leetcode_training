@@ -16,14 +16,18 @@ import Foundation
 
 class Solution {
     func addDigits(_ num: Int) -> Int {
+        func nextValue(_ num: Int) -> Int {
+            return Array(String(num)).reduce(into: 0) { partialResult , char in
+                if let value = Int(String(char)) {
+                    partialResult += value
+                }
+            }
+        }
+         
         var value = num
         
         while value > 9 {
-            value = Array(String(value)).reduce(into: 0) { partialResult, char in
-                if let number = Int(String(char)) {
-                    partialResult += number
-                }
-            }
+            value = nextValue(value)
         }
         
         return value
