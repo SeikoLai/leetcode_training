@@ -1,15 +1,8 @@
-//
-//  Leetcode.swift
-//  Leetcode
-//
-//  Created by Sam on 2024/12/12.
-//
-
 import Foundation
 
 // Given an integer n, return true if it is a power of three. Otherwise, return false.
 //
-// An integer n is a power of three, if there exists an integer x such that n == 3ˣ.
+// An integer n is a power of three, if there exists an integer x such that n == 3x.
 //
 // Example 1:
 // Input: n = 27
@@ -52,3 +45,28 @@ class Solution {
     }
 }
 
+
+let solution = Solution()
+var testCase = 27
+var assert = solution.isPowerOfThree(testCase) == true
+
+testCase = 0
+assert = solution.isPowerOfThree(testCase) == false
+
+testCase = -1
+assert = solution.isPowerOfThree(testCase) == false
+
+testCase = 1
+assert = solution.isPowerOfThree(testCase) == true
+
+testCase = -27
+assert = solution.isPowerOfThree(testCase) == false
+
+testCase = 45
+assert = solution.isPowerOfThree(testCase) == false
+
+testCase = 6
+assert = solution.isPowerOfThree(testCase) == false
+
+testCase = 9
+assert = solution.isPowerOfThree(testCase) == true
