@@ -54,24 +54,34 @@ import UIKit
 
 class Solution {
     func minimumPairRemoval(_ nums: [Int]) -> Int {
-        func _minimumPairRemoval(_ numbers: [Int], _ operations: inout Int) -> Int {
-            guard numbers != numbers.sorted(by: <) else {
-                print("The array \(numbers) is already sorted.")
-                return operations
-            }
+        
+        func _minimumPairRemoval(_ nums: [Int], _ operations: inout Int) -> Int {
+            guard nums != nums.sorted(by: <) else { return operations }
+            var sorted = nums.enumerated().sorted { $0.offset < $1.offset }
             
             var index = 0
+            var count = sorted.count
             var value = Int.max
-            numbers.enumerated().forEach { (i, num) in
-                if i+1 < numbers.count, numbers[i]+numbers[i+1] < value {
-                    value = numbers[i]+numbers[i+1]
-                    index = i
+            var current = Int.min
+            var next = Int.min
+            var loop = true
+            
+            while loop {
+                current = sorted[index].element
+                index += 1
+                next = sorted[index].element
+                if current + next < value {
+                    value = current + next
                 }
-                if i+1 >= numbers.count {
-                    var modifiedNumbers = numbers
-                    modifiedNumbers.replaceSubrange(index...index+1, with: [value])
+                if index == sorted.count - 1, let targetIndex = sorted.firstIndex(
+                    where: { $0.element == current }
+                ) {	
+                    var modified = nums
                     operations += 1
-                    _minimumPairRemoval(modifiedNumbers, &operations)
+                    let range = targetIndex...targetIndex+1
+                    modified.replaceSubrange(range, with: [value])
+                    _minimumPairRemoval(modified, &operations)
+                    loop = false
                 }
             }
             
@@ -83,3 +93,10 @@ class Solution {
         return operations
     }
 }
+
+let s = Solution()
+//var numbers: [Int] = [1,1,4,4,2,-4,-1]
+var numbers: [Int] = [2,2,-1,3,-2,2,1,1,1,0,-1]
+//var numbers: [Int] = [5,2,3,1]
+var operations = s.minimumPairRemoval(numbers)
+print("Numbers = \(numbers), operations = \(operations)")
