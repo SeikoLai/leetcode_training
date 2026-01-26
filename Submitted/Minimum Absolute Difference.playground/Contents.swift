@@ -39,21 +39,21 @@ class Solution {
         
         var minimumDiff = Int.max
         var index = 0
-        
+        var replace = false
         while index < sorted.count - 1 {
             let current = sorted[index]
             let next = sorted[index+1]
             let currentDiff = next - current
             if currentDiff < minimumDiff {
                 minimumDiff = currentDiff
+                replace = true
             }
-            index += 1
-        }
-        index = 0
-        while index < sorted.count - 1 {
-            let current = sorted[index]
-            let next = sorted[index+1]
-            let currentDiff = next - current
+            else if currentDiff >= minimumDiff {
+                replace = false
+            }
+            if replace {
+                result.removeAll()
+            }
             if currentDiff == minimumDiff {
                 result.append([current, next])
             }
