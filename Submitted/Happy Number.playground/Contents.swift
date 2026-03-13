@@ -39,11 +39,10 @@ class Solution {
         repeat {
             if digits.count != 0 { digits.removeAll() }
             if value < 10 { value = value * value }
-            let valueString = String(value)
             if !checkedValue.contains(value) { checkedValue.insert(value) } else { break }
+            let valueString = String(value)
             digits = valueString.compactMap { Int(String($0)) }
             value = digits.reduce(0) { $0 + $1 * $1 }
-            
         } while digits.count > 1
         
         return digits.count == 1 && digits[0] == 1
