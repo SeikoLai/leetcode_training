@@ -1,10 +1,30 @@
-import Foundation
+/**
+ Given two strings `needle` and `haystack`, return the index of the first occurrence of `needle` in `haystack`, or `-1` if `needle` is not part of `haystack`.
+ 
+ 
+ 
+ ``Example 1:``
+ 
+     Input: haystack = "sadbutsad", needle = "sad"
+     Output: 0
+     Explanation: "sad" occurs at index 0 and 6.
+     The first occurrence is at index 0, so we return 0.
+ 
+ ``Example 2:``
+ 
+     Input: haystack = "leetcode", needle = "leeto"
+     Output: -1
+     Explanation: "leeto" did not occur in "leetcode", so we return -1.
+ 
+ 
+ ``Constraints:``
+ 
+ `1 <= haystack.length, needle.length <= 10⁴`
+ `haystack and needle consist of only lowercase English characters.`
+ */
 
 func strStr(_ haystack: String, _ needle: String) -> Int {
-    // Constraints:
-    //
-    // 1 <= haystack.length, needle.length <= 10^4
-    // haystack and needle consist of only lowercase English characters.
+
     guard 1 <= haystack.count && haystack.count <= 10_000 && 1 <= needle.count && needle.count <= 10_000 && haystack.lowercased() == haystack && needle.lowercased() == needle && needle.count <= haystack.count else {
         return -1
     }
